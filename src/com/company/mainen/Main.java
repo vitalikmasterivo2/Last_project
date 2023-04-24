@@ -50,9 +50,9 @@ public class Main {
         ps1.tString();
 
         //Головний герой "CenHuman" атакує "Ork"
-        ork.setHealth(ps1.AttackOrk(ork.getHealth(), ps1.getRasa()));
-        ork.setHealth(ps1.AttackOrk(ork.getHealth(), ps1.getRasa()));
-        ork.setHealth(ps1.AttackOrk(ork.getHealth(), ps1.getRasa()));
+        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
+        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
+        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
 
         System.out.println(" ");
 

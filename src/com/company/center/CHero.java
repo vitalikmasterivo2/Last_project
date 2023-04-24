@@ -89,7 +89,7 @@ Timer timer = new Timer();
 
 
     //Метод нанесення шкоди ворогу (Ork)
-    public int AttackOrk(int healthOrk, String rasa) {
+    public int AttackOrk(int healthOrk) {
         int a = healthOrk - getDamage();
         setExperience(getExperience() + 5);
         setEnergy(getEnergy() - 5);
@@ -116,21 +116,20 @@ Timer timer = new Timer();
     }
 
     //Метод нанесення шкоди ворогу (Human)
-    public int AttackHuman(int healthHuman, String rasa) {
-        ShowRasa(rasa);
+    public int AttackHuman(int healthHuman) {
         int a = healthHuman - getDamage();
         setExperience(getExperience() + 5);
         setEnergy(getEnergy() - 5);
 
-        if (getLevel() == 0 & getExperience() >= 5) {
+        if (getLevel() == 0 & getExperience() == 5) {
             setLevel(getLevel() + 1);
             setDamage(getDamage() + 3);
             setExperience(getExperience() - 5);
-        } else if (getLevel() == 1 & getExperience() >= 10) {
+        } else if (getLevel() == 1 & getExperience() == 10) {
             setLevel(getLevel() + 1);
             setDamage(getDamage() + 3);
             setExperience(getExperience() - 10);
-        } else if (getLevel() == 2 & getExperience() >= 15) {
+        } else if (getLevel() == 2 & getExperience() == 15) {
             setLevel(getLevel() + 1);
             setDamage(getDamage() + 3);
             setExperience(getExperience() - 15);
