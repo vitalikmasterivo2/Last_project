@@ -11,8 +11,8 @@ public class test1 {
 
         Ork ork = new Ork("test");
 
-        ork.setHealth(ps1.AttackOrk(ork.getHealth(), ps1.getRasa()));
-        ork.setHealth(ps1.AttackOrk(ork.getHealth(), ps1.getRasa()));
+        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
+        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
 
 
         System.out.println(ork.toString());
