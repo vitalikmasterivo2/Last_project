@@ -4,7 +4,6 @@ public class Elf {
     private String name;
     final String rasa = "Elf";
     private int level = 0;
-    private int experience = 0;
     private int damage = 3;
     private int energy = 100;
     private int health = 100;
@@ -21,13 +20,6 @@ public class Elf {
         return level;
     }public void setLevel(int level) {
         this.level = level;
-    }
-
-
-    public int getExperience() {
-        return experience;
-    }public void setExperience(int experience) {
-        this.experience = experience;
     }
 
     public int getDamage() {
@@ -51,43 +43,26 @@ public class Elf {
 
     //Метод нанесення шкоди ворогу (CenOrk)
     public int ElfAttackOrk (int healthOrk){
+        Show_Level();
         int a = healthOrk - getDamage();
-        setExperience(getExperience() + 5);
         setEnergy(getEnergy() - 5);
-        if (getLevel() == 0 & getExperience() >= 5) {
-            setLevel(getLevel() + 1);
-            setDamage(getDamage() + 3);
-        } else if (getLevel() == 1 & getExperience() >= 10) {
-            setLevel(getLevel() + 1);
-            setDamage(getDamage() + 3);
-        }else if (getLevel() == 2 & getExperience() >= 15) {
-            setLevel(getLevel() + 1);
-            setDamage(getDamage() + 3);
-        }
         return a;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void Show_Level(){
+        switch (getLevel()){
+            case 1:
+                setDamage(getDamage() + 3);
+                break;
+            case 2:
+                setDamage(getDamage() + 6);
+                break;
+            case 3:
+                setDamage(getDamage() + 9);
+            default:
+                setDamage(getDamage());
+        }
+    }
 
 
 
@@ -97,7 +72,6 @@ public class Elf {
                 "name='" + name + '\'' +
                 ", rasa=" + rasa +
                 ", level=" + level +
-                ", experience=" + experience +
                 ", damage=" + damage +
                 ", energy=" + energy +
                 ", health=" + health +
@@ -105,10 +79,9 @@ public class Elf {
     }
 
     //Конструктор
-    public Elf (String name) {
+    public Elf (String name, int level) {
         setName(name);
-//        this.level = level;
-//        this.experience = experience;
+        this.level = level;
 //        this.damage = damage;
 //        this.energy = energy;
 //        this.health = health;
