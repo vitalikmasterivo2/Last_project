@@ -7,6 +7,8 @@ public class Elf {
     private int damage = 3;
     private int energy = 100;
     private int health = 100;
+    private boolean state;
+    private int progress_check;
 
 
     //Getter and Setter персонажа
@@ -38,6 +40,12 @@ public class Elf {
         return health;
     }public void setHealth(int health) {
         this.health = health;
+    }
+
+    public boolean isState() {
+        return state;
+    }public void setState(boolean state) {
+        this.state = state;
     }
 
 
