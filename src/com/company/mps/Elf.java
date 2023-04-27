@@ -48,6 +48,12 @@ public class Elf {
         this.state = state;
     }
 
+    public void False (){
+        setState(false);
+    }public void True (){
+        setState(true);
+    }
+
 
     //Метод нанесення шкоди ворогу (CenOrk)
     public int ElfAttackOrk (int healthOrk){
@@ -73,16 +79,17 @@ public class Elf {
     }
 
 
-
     @Override
     public String toString() {
         return "Elf{" +
                 "name='" + name + '\'' +
-                ", rasa=" + rasa +
+                ", rasa='" + rasa + '\'' +
                 ", level=" + level +
                 ", damage=" + damage +
                 ", energy=" + energy +
                 ", health=" + health +
+                ", state=" + state +
+                ", progress_check=" + progress_check +
                 '}';
     }
 
