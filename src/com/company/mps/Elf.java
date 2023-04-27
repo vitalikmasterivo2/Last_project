@@ -1,5 +1,6 @@
 package com.company.mps;
 
+// змінні персонажа Elf
 public class Elf {
     private String name;
     final String rasa = "Elf";
@@ -11,43 +12,39 @@ public class Elf {
     private int progress_check;
 
 
-    //Getter and Setter персонажа
+    //Getter and Setter персонажа Elf
     public String getName() {
         return name;
     }public void setName(String name) {
         this.name = name;
     }
-
     public int getLevel() {
         return level;
     }public void setLevel(int level) {
         this.level = level;
     }
-
     public int getDamage() {
         return damage;
     }public void setDamage(int damage) {
         this.damage = damage;
     }
-
     public int getEnergy() {
         return energy;
     }public void setEnergy(int energy) {
         this.energy = energy;
     }
-
     public int getHealth() {
         return health;
     }public void setHealth(int health) {
         this.health = health;
     }
-
     public boolean isState() {
         return state;
     }public void setState(boolean state) {
         this.state = state;
     }
 
+    // присвоєння логічного заначення змінній стану
     public void False (){
         setState(false);
     }public void True (){
@@ -63,6 +60,7 @@ public class Elf {
         return a;
     }
 
+    // перевірка рівня персонажу
     public void Show_Level(){
         switch (getLevel()){
             case 1:
@@ -78,7 +76,7 @@ public class Elf {
         }
     }
 
-
+    // вивід інформації на екран
     @Override
     public String toString() {
         return "Elf{" +
