@@ -84,7 +84,6 @@ public class Elf {
         }
     }
 
-
     @Override
     public String toString() {
         return "Elf{" +
