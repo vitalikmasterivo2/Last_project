@@ -5,7 +5,6 @@ public class Elf {
     final String rasa = "Elf";
     private int level = 0;
     private int damage = 3;
-    private int energy = 100;
     private int health = 100;
     private boolean state;
     private int progress_check = 0;
@@ -28,12 +27,6 @@ public class Elf {
         return damage;
     }public void setDamage(int damage) {
         this.damage = damage;
-    }
-
-    public int getEnergy() {
-        return energy;
-    }public void setEnergy(int energy) {
-        this.energy = energy;
     }
 
     public int getHealth() {
@@ -65,7 +58,6 @@ public class Elf {
     public int ElfAttackOrk (int healthOrk){
         Show_Level();
         int a = healthOrk - getDamage();
-        setEnergy(getEnergy() - 5);
         return a;
     }
 
@@ -91,7 +83,6 @@ public class Elf {
                 ", rasa='" + rasa + '\'' +
                 ", level=" + level +
                 ", damage=" + damage +
-                ", energy=" + energy +
                 ", health=" + health +
                 ", state=" + state +
                 ", progress_check=" + progress_check +

@@ -15,7 +15,7 @@ public  class CHero {
     private int energy = 100;
     private int health = 100;
 
-Timer timer = new Timer();
+
 
     ArrayList<String> inventory = new ArrayList<>();
 
@@ -174,7 +174,7 @@ Timer timer = new Timer();
     }
 
     public void regenerate (){
-
+        Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
