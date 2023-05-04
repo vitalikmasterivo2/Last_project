@@ -11,7 +11,7 @@ public class test1 {
         Elf ps1 = new Elf("Radii", 3);
         Ork ork = new Ork("lox");
 
-        ork.setHealth(ps1.ElfAttackOrk(ork.getHealth()));
+        ork.setHealth(ps1.AttackObject(ork.getHealth()));
         ps1.False();
 
         System.out.println();
