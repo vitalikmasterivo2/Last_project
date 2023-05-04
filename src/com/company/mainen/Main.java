@@ -50,9 +50,9 @@ public class Main {
         ps1.tString();
 
         //Головний герой "CenHuman" атакує "Ork"
-        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
-        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
-        ork.setHealth(ps1.AttackOrk(ork.getHealth()));
+        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+        ork.setHealth(ps1.AttackObject(ork.getHealth()));
 
         System.out.println(" ");
 
@@ -66,7 +66,7 @@ public class Main {
         ps1.Run(1);
 
 
-        ps1.regenerate();
+        //ps1.regenerate();
         ps1.Use_Apple();
 
         System.out.println(" ");

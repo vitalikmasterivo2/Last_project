@@ -10,6 +10,26 @@ public class Elf {
     private int progress_check = 0;
 
 
+    //Метод нанесення шкоди ворогу (CenOrk)
+    public int AttackObject (int healthObject){
+        Show_Level();
+        int a = healthObject - getDamage();
+        return a;
+    }
+    public void Show_Level(){
+        switch (getLevel()){
+            case 1:
+                setDamage(getDamage() + 4);
+                break;
+            case 2:
+                setDamage(getDamage() + 8);
+                break;
+            case 3:
+                setDamage(getDamage() + 12);
+            default:
+                setDamage(getDamage());
+        }
+    }
     //Getter and Setter персонажа
     public String getName() {
         return name;
@@ -51,29 +71,6 @@ public class Elf {
         setState(false);
     }public void True (){
         setState(true);
-    }
-
-
-    //Метод нанесення шкоди ворогу (CenOrk)
-    public int ElfAttackOrk (int healthOrk){
-        Show_Level();
-        int a = healthOrk - getDamage();
-        return a;
-    }
-
-    public void Show_Level(){
-        switch (getLevel()){
-            case 1:
-                setDamage(getDamage() + 3);
-                break;
-            case 2:
-                setDamage(getDamage() + 6);
-                break;
-            case 3:
-                setDamage(getDamage() + 9);
-            default:
-                setDamage(getDamage());
-        }
     }
 
     @Override
