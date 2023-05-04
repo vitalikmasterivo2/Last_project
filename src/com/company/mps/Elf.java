@@ -7,6 +7,8 @@ public class Elf {
     private int damage = 3;
     private int energy = 100;
     private int health = 100;
+    private boolean state;
+    private int progress_check = 0;
 
 
     //Getter and Setter персонажа
@@ -40,6 +42,24 @@ public class Elf {
         this.health = health;
     }
 
+    public boolean isState() {
+        return state;
+    }public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public int getProgress_check() {
+        return progress_check;
+    }public void setProgress_check(int progress_check) {
+        this.progress_check = progress_check;
+    }
+
+    public void False (){
+        setState(false);
+    }public void True (){
+        setState(true);
+    }
+
 
     //Метод нанесення шкоди ворогу (CenOrk)
     public int ElfAttackOrk (int healthOrk){
@@ -64,17 +84,17 @@ public class Elf {
         }
     }
 
-
-
     @Override
     public String toString() {
         return "Elf{" +
                 "name='" + name + '\'' +
-                ", rasa=" + rasa +
+                ", rasa='" + rasa + '\'' +
                 ", level=" + level +
                 ", damage=" + damage +
                 ", energy=" + energy +
                 ", health=" + health +
+                ", state=" + state +
+                ", progress_check=" + progress_check +
                 '}';
     }
 
