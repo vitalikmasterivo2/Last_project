@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public  class CHero {
+public  class CHero  {
     //Параметри головного персонажа
     private String name;
     private String rasa;
@@ -17,9 +17,11 @@ public  class CHero {
     private int damage = 3;
     private int energy = 100;
     private int health = 100;
+    private int magic_power = 100;
+
     ArrayList<String> inventory = new ArrayList<>();
 
-    public void ShowRasa (String rasa){
+    public void Show_Rasa (String rasa){
         switch (rasa) {
             case "Human" -> {
                 setRasa(rasa);
@@ -52,17 +54,7 @@ public  class CHero {
             }
         }
     }
-    public void ShowAll(){
-        showEnergy();
-        showHealth();
-        ShowRasa(getRasa());
-    }
-    //Метод нанесення шкоди ворогу
-    public int AttackObject(int healthObject) {
-        int a = healthObject - getDamage();
-        setExperience(getExperience() + 5);
-        setEnergy(getEnergy() - 5);
-
+    public void Show_Level(){
         if (getLevel() == 0 & getExperience() == 5) {
             setLevel(getLevel() + 1);
             setDamage(getDamage() + 3);
@@ -76,8 +68,27 @@ public  class CHero {
             setDamage(getDamage() + 3);
             setExperience(getExperience() - 15);
         }
-        showEnergy();
-        showHealth();
+    }
+    public void ShowAll(){
+        Show_Level();
+        Show_Energy();
+        Show_Health();
+        Show_Rasa(getRasa());
+    }
+    //Метод нанесення шкоди ворогу
+    public int AttackObject(int healthObject) {
+        int a = healthObject - getDamage();
+        setExperience(getExperience() + 5);
+        setEnergy(getEnergy() - 5);
+        Show_Level();
+        Show_Energy();
+        Show_Health();
+        return a;
+    }
+    public int fireball (int healthObject){
+        int a = healthObject - getDamage();
+        setMagic_power(getMagic_power() - 15);
+        Show_Level();
         return a;
     }
 
@@ -112,21 +123,21 @@ public  class CHero {
     public void Use_Apple (){
         setHealth(getHealth() + 5);
         setEnergy(getEnergy() + 10);
-        showEnergy();
-        showHealth();
+        Show_Energy();
+        Show_Health();
     }
     public void Run (int point){
         int point_size = point * 5;
         setEnergy(getEnergy() - point_size);
-        showEnergy();
-        showHealth();
+        Show_Energy();
+        Show_Health();
     }
-    public void showEnergy (){
+    public void Show_Energy (){
         if (getEnergy() > 100){
             setEnergy(100);
         }
     }
-    public void showHealth (){
+    public void Show_Health (){
         if (getHealth() > 100){
             setHealth(100);
         }
@@ -194,21 +205,41 @@ public  class CHero {
     public void setHealth(int health) {
         this.health = health;
     }
-
-
-
+    public int getMagic_power() {
+        return magic_power;
+    }
+    public void setMagic_power(int magic_power) {
+        this.magic_power = magic_power;
+    }
 
     public void tString() {
-        System.out.println( "CHero{" +
-                "name='" + name + '\'' +
-                ", rasa='" + rasa + '\'' +
-                ", level=" + level +
-                ", protection=" + protection +
-                ", experience=" + experience +
-                ", damage=" + damage +
-                ", energy=" + energy +
-                ", health=" + health +
-                '}');
+        switch (getRasa()) {
+            case "Elf" -> {
+                System.out.println("CHero{" +
+                        "name='" + name + '\'' +
+                        ", rasa='" + rasa + '\'' +
+                        ", level=" + level +
+                        ", protection=" + protection +
+                        ", experience=" + experience +
+                        ", damage=" + damage +
+                        ", energy=" + energy +
+                        ", health=" + health +
+                        ", magic_power=" + magic_power +
+                        '}');
+            }
+            default -> {
+                System.out.println("CHero{" +
+                        "name='" + name + '\'' +
+                        ", rasa='" + rasa + '\'' +
+                        ", level=" + level +
+                        ", protection=" + protection +
+                        ", experience=" + experience +
+                        ", damage=" + damage +
+                        ", energy=" + energy +
+                        ", health=" + health +
+                        '}');
+            }
+        }
     }
 
     //Конструктор

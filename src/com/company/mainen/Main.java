@@ -2,6 +2,7 @@ package com.company.mainen;
 
 import com.company.armour.Breastplate;
 import com.company.center.CHero;
+import com.company.mps.Elf;
 import com.company.mps.Human;
 import com.company.mps.Ork;
 import com.company.weapon.Sword;
@@ -33,6 +34,8 @@ public class Main {
         //Створення другорядного персонажа "Ork"
         Ork ork = new Ork("Gull");
 
+        Elf elf = new Elf("Ra");
+
         // Створення допоміжних матеріалів
         Sword sword = new Sword();
         Breastplate breastplate = new Breastplate();
@@ -53,6 +56,8 @@ public class Main {
 //        ork.setHealth(ps1.AttackObject(ork.getHealth()));
 //        ork.setHealth(ps1.AttackObject(ork.getHealth()));
 //        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+
+//        elf.setHealth(ps1.fireball(elf.getHealth()));
 
         System.out.println(" ");
 
@@ -78,6 +83,7 @@ public class Main {
         //Виведення інформації на екран
         System.out.println(human.toString());
         System.out.println(ork.toString());
+        System.out.println(elf.toString());
         ps1.tString();
     }
 }

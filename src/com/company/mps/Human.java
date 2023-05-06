@@ -4,8 +4,7 @@ public class Human {
     //Параметри другорядного персонажа
     private String name;
     final String rasa = "Human";
-    private int level ;
-    private int experience = 0;
+    private int level = 0;
     private int damage = 3;
     private int energy = 100;
     private int health = 100;
@@ -15,21 +14,20 @@ public class Human {
     //Метод нанесення шкоди ворогу
     public int AttackObject (int healthObject){
         int a = healthObject - getDamage();
-        setExperience(getExperience() + 5);
         setEnergy(getEnergy() - 5);
-
         return a;
     }
     public void Show_Level(){
         switch (getLevel()){
             case 1:
-                setDamage(getDamage() + 4);
+                setDamage(getDamage() + 3);
                 break;
             case 2:
-                setDamage(getDamage() + 8);
+                setDamage(getDamage() + 6);
                 break;
             case 3:
-                setDamage(getDamage() + 12);
+                setDamage(getDamage() + 9);
+                break;
             default:
                 setDamage(getDamage());
         }
@@ -45,11 +43,6 @@ public class Human {
         return level;
     }public void setLevel(int level) {
         this.level = level;
-    }
-    public int getExperience() {
-        return experience;
-    }public void setExperience(int experience) {
-        this.experience = experience;
     }
     public int getDamage() {
         return damage;
@@ -83,7 +76,6 @@ public class Human {
                 "name='" + name + '\'' +
                 ", rasa=" + rasa +
                 ", level=" + level +
-                ", experience=" + experience +
                 ", damage=" + damage +
                 ", energy=" + energy +
                 ", health=" + health +

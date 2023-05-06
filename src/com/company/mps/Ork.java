@@ -5,8 +5,7 @@ public class Ork {
     private String name;
     final String rasa = "Ork";
     private int level = 0;
-    private int experience = 0;
-    private int damage = 3;
+    private int damage = 5;
     private int energy = 100;
     private int health = 100;
     private boolean state;
@@ -15,20 +14,20 @@ public class Ork {
     //Метод нанесення шкоди ворогу
     public int AttackObject (int healthObject){
         int a = healthObject - getDamage();
-        setExperience(getExperience() + 5);
         setEnergy(getEnergy() - 5);
         return a;
     }
     public void Show_Level(){
         switch (getLevel()){
             case 1:
-                setDamage(getDamage() + 4);
+                setDamage(getDamage() + 5);
                 break;
             case 2:
-                setDamage(getDamage() + 8);
+                setDamage(getDamage() + 10);
                 break;
             case 3:
-                setDamage(getDamage() + 12);
+                setDamage(getDamage() + 15);
+                break;
             default:
                 setDamage(getDamage());
         }
@@ -44,11 +43,6 @@ public class Ork {
         return level;
     }public void setLevel(int level) {
         this.level = level;
-    }
-    public int getExperience() {
-        return experience;
-    }public void setExperience(int experience) {
-        this.experience = experience;
     }
     public int getDamage() {
         return damage;
@@ -81,7 +75,6 @@ public class Ork {
                 "name='" + name + '\'' +
                 ", rasa=" + rasa +
                 ", level=" + level +
-                ", experience=" + experience +
                 ", damage=" + damage +
                 ", energy=" + energy +
                 ", health=" + health +

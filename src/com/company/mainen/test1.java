@@ -8,7 +8,7 @@ import com.company.mps.Ork;
 public class test1 {
     public static void main(String[] args) {
     //Тестовий класс, де тестуються методи і т. д.
-        Elf ps1 = new Elf("Radii", 3);
+        Elf ps1 = new Elf("Radii");
         Ork ork = new Ork("lox");
 
         ork.setHealth(ps1.AttackObject(ork.getHealth()));
