@@ -1,5 +1,8 @@
 package com.company.center;
 
+import com.company.armour.Breastplate;
+import com.company.weapon.Sword;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -128,66 +131,73 @@ public  class CHero {
             setHealth(100);
         }
     }
-    public void Save_Inventory(String subject, int damage) {
-        if (subject.equals("Breastplate")){
-            setProtection(getProtection() + damage);
-        }else if (subject.equals("Sword")){
-            setDamage(getDamage() + damage);
-        }
-        inventory.add(subject);
-    }
+    public void Save_Inventory(int ID) {
+        switch (ID) {
+            case 1:
+                Breastplate breastplate = new Breastplate();
+                setProtection(getProtection() + breastplate.getProtect());
+                inventory.add(breastplate.getName());
+                break;
+            case 2:
+                Sword sword = new Sword();
+                setDamage(getDamage() + sword.getDamage());
+                inventory.add(sword.getName());
+                break;
+            default:
+                System.err.println("Невірно введено індентифікатор обʼєкту");
 
-    public void Show_Inventory(){
-        System.out.println(getName() + " have: " + inventory.toString());
+
+        }
     }
+    public void Show_Inventory(){System.out.println(getName() + " have: " + inventory.toString());}
+
     //Getter and Setter персонажа
     public String getName() {
         return name;
     }public void setName(String name) {
         this.name = name;
     }
-
     public String getRasa() {
         return rasa;
     }public void setRasa(String rasa) {
         this.rasa = rasa;
     }
-
     public int getLevel() {
         return level;
     }public void setLevel(int level) {
         this.level = level;
     }
-
     public int getExperience() {
         return experience;
     }public void setExperience(int experience) {
         this.experience = experience;
     }
-
     public int getProtection() {
         return protection;
     }public void setProtection(int protection) {
         this.protection = protection;
     }
-
     public int getDamage() {
         return damage;
     }public void setDamage(int damage) {
         this.damage = damage;
     }
-
     public int getEnergy() {
         return energy;
-    }public void setEnergy(int energy) {
+    }
+    public void setEnergy(int energy) {
         this.energy = energy;
     }
-
     public int getHealth() {
         return health;
-    }public void setHealth(int health) {
+    }
+    public void setHealth(int health) {
         this.health = health;
     }
+
+
+
+
     public void tString() {
         System.out.println( "CHero{" +
                 "name='" + name + '\'' +

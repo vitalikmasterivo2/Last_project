@@ -50,14 +50,14 @@ public class Main {
         ps1.tString();
 
         //Головний герой "CenHuman" атакує "Ork"
-        ork.setHealth(ps1.AttackObject(ork.getHealth()));
-        ork.setHealth(ps1.AttackObject(ork.getHealth()));
-        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+//        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+//        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+//        ork.setHealth(ps1.AttackObject(ork.getHealth()));
 
         System.out.println(" ");
 
-        ps1.Save_Inventory(sword.ID_Sword(), sword.Dam_Sword());
-        ps1.Save_Inventory(breastplate.ID_Breastplate(), breastplate.Pr_Breastplate());
+        ps1.Save_Inventory(sword.getID());
+        ps1.Save_Inventory(breastplate.getID());
 
         ps1.Show_Inventory();
 
