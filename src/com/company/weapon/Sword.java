@@ -29,5 +29,7 @@ public class Sword {
         return ID;
     }
 
-    public Sword() {}
+    public Sword(int level) {
+        setLevel(level);
+    }
 }

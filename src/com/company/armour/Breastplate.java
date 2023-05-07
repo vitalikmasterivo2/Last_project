@@ -26,5 +26,7 @@ public class Breastplate {
         return ID;
     }
 
-    public Breastplate() {}
+    public Breastplate(int level) {
+        setLevel(level);
+    }
 }

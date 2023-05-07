@@ -4,6 +4,7 @@ import com.company.armour.Breastplate;
 import com.company.weapon.Sword;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -85,14 +86,17 @@ public  class CHero  {
         Show_Health();
         return a;
     }
-    public int fireball (int healthObject){
-        int a = healthObject - getDamage();
-        setMagic_power(getMagic_power() - 15);
-        Show_Level();
-        return a;
+    public int Fireball (int healthObject) {
+        if (getRasa().equals("Elf")) {
+            int a = healthObject - getDamage();
+            setMagic_power(getMagic_power() - 15);
+            Show_Level();
+            return a;
+        }
+        return healthObject;
     }
 
-    public void regenerate (){
+    public void Regenerate (){
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -142,15 +146,34 @@ public  class CHero  {
             setHealth(100);
         }
     }
-    public void Save_Inventory(int ID) {
+
+    public void Save_Inventory(int ID, int level) {
         switch (ID) {
             case 1:
-                Breastplate breastplate = new Breastplate();
+                Breastplate breastplate = new Breastplate(level);
+
+                if(breastplate.getLevel() == 1){
+                    setProtection(getProtection() + 5);
+                } else if (breastplate.getLevel() == 2) {
+                    setProtection(getProtection() + 10);
+                }else if (breastplate.getLevel() == 3) {
+                    setProtection(getProtection() + 15);
+                }else
+
                 setProtection(getProtection() + breastplate.getProtect());
                 inventory.add(breastplate.getName());
                 break;
             case 2:
-                Sword sword = new Sword();
+                Sword sword = new Sword(level);
+
+                if(sword.getLevel() == 1 ){
+                    setProtection(getProtection() + 5);
+                } else if (sword.getLevel() == 2 ) {
+                    setProtection(getProtection() + 10);
+                }else if (sword.getLevel() == 3 ) {
+                    setProtection(getProtection() + 15);
+                }
+
                 setDamage(getDamage() + sword.getDamage());
                 inventory.add(sword.getName());
                 break;
