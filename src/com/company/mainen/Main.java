@@ -37,8 +37,8 @@ public class Main {
         Elf elf = new Elf("Ra");
 
         // Створення допоміжних матеріалів
-        Sword sword = new Sword();
-        Breastplate breastplate = new Breastplate();
+        Sword sword = new Sword(1);
+        Breastplate breastplate = new Breastplate(1);
 
 
         ps1.ShowAll();
@@ -61,8 +61,8 @@ public class Main {
 
         System.out.println(" ");
 
-        ps1.Save_Inventory(sword.getID());
-        ps1.Save_Inventory(breastplate.getID());
+        ps1.Save_Inventory(sword.getID(), sword.getLevel());
+        ps1.Save_Inventory(breastplate.getID(), breastplate.getLevel());
 
         ps1.Show_Inventory();
 
