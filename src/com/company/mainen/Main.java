@@ -2,6 +2,7 @@ package com.company.mainen;
 
 import com.company.armour.Breastplate;
 import com.company.center.CHero;
+import com.company.mps.Elf;
 import com.company.mps.Human;
 import com.company.mps.Ork;
 import com.company.weapon.Sword;
@@ -33,9 +34,11 @@ public class Main {
         //Створення другорядного персонажа "Ork"
         Ork ork = new Ork("Gull");
 
+        Elf elf = new Elf("Ra");
+
         // Створення допоміжних матеріалів
-        Sword sword = new Sword();
-        Breastplate breastplate = new Breastplate();
+        Sword sword = new Sword(1);
+        Breastplate breastplate = new Breastplate(1);
 
 
         ps1.ShowAll();
@@ -50,14 +53,16 @@ public class Main {
         ps1.tString();
 
         //Головний герой "CenHuman" атакує "Ork"
-        ork.setHealth(ps1.AttackObject(ork.getHealth()));
-        ork.setHealth(ps1.AttackObject(ork.getHealth()));
-        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+//        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+//        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+//        ork.setHealth(ps1.AttackObject(ork.getHealth()));
+
+//        elf.setHealth(ps1.fireball(elf.getHealth()));
 
         System.out.println(" ");
 
-        ps1.Save_Inventory(sword.ID_Sword(), sword.Dam_Sword());
-        ps1.Save_Inventory(breastplate.ID_Breastplate(), breastplate.Pr_Breastplate());
+        ps1.Save_Inventory(sword.getID(), sword.getLevel());
+        ps1.Save_Inventory(breastplate.getID(), breastplate.getLevel());
 
         ps1.Show_Inventory();
 
@@ -78,6 +83,7 @@ public class Main {
         //Виведення інформації на екран
         System.out.println(human.toString());
         System.out.println(ork.toString());
+        System.out.println(elf.toString());
         ps1.tString();
     }
 }

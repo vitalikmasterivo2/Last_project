@@ -1,10 +1,14 @@
 package com.company.center;
 
+import com.company.armour.Breastplate;
+import com.company.weapon.Sword;
+
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public  class CHero {
+public  class CHero  {
     //Параметри головного персонажа
     private String name;
     private String rasa;
@@ -14,9 +18,11 @@ public  class CHero {
     private int damage = 3;
     private int energy = 100;
     private int health = 100;
+    private int magic_power = 100;
+
     ArrayList<String> inventory = new ArrayList<>();
 
-    public void ShowRasa (String rasa){
+    public void Show_Rasa (String rasa){
         switch (rasa) {
             case "Human" -> {
                 setRasa(rasa);
@@ -49,17 +55,7 @@ public  class CHero {
             }
         }
     }
-    public void ShowAll(){
-        showEnergy();
-        showHealth();
-        ShowRasa(getRasa());
-    }
-    //Метод нанесення шкоди ворогу
-    public int AttackObject(int healthObject) {
-        int a = healthObject - getDamage();
-        setExperience(getExperience() + 5);
-        setEnergy(getEnergy() - 5);
-
+    public void Show_Level(){
         if (getLevel() == 0 & getExperience() == 5) {
             setLevel(getLevel() + 1);
             setDamage(getDamage() + 3);
@@ -73,12 +69,34 @@ public  class CHero {
             setDamage(getDamage() + 3);
             setExperience(getExperience() - 15);
         }
-        showEnergy();
-        showHealth();
+    }
+    public void ShowAll(){
+        Show_Level();
+        Show_Energy();
+        Show_Health();
+        Show_Rasa(getRasa());
+    }
+    //Метод нанесення шкоди ворогу
+    public int AttackObject(int healthObject) {
+        int a = healthObject - getDamage();
+        setExperience(getExperience() + 5);
+        setEnergy(getEnergy() - 5);
+        Show_Level();
+        Show_Energy();
+        Show_Health();
         return a;
     }
+    public int Fireball (int healthObject) {
+        if (getRasa().equals("Elf")) {
+            int a = healthObject - getDamage();
+            setMagic_power(getMagic_power() - 15);
+            Show_Level();
+            return a;
+        }
+        return healthObject;
+    }
 
-    public void regenerate (){
+    public void Regenerate (){
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -109,96 +127,142 @@ public  class CHero {
     public void Use_Apple (){
         setHealth(getHealth() + 5);
         setEnergy(getEnergy() + 10);
-        showEnergy();
-        showHealth();
+        Show_Energy();
+        Show_Health();
     }
     public void Run (int point){
         int point_size = point * 5;
         setEnergy(getEnergy() - point_size);
-        showEnergy();
-        showHealth();
+        Show_Energy();
+        Show_Health();
     }
-    public void showEnergy (){
+    public void Show_Energy (){
         if (getEnergy() > 100){
             setEnergy(100);
         }
     }
-    public void showHealth (){
+    public void Show_Health (){
         if (getHealth() > 100){
             setHealth(100);
         }
     }
-    public void Save_Inventory(String subject, int damage) {
-        if (subject.equals("Breastplate")){
-            setProtection(getProtection() + damage);
-        }else if (subject.equals("Sword")){
-            setDamage(getDamage() + damage);
-        }
-        inventory.add(subject);
-    }
 
-    public void Show_Inventory(){
-        System.out.println(getName() + " have: " + inventory.toString());
+    public void Save_Inventory(int ID, int level) {
+        switch (ID) {
+            case 1:
+                Breastplate breastplate = new Breastplate(level);
+
+                if(breastplate.getLevel() == 1){
+                    setProtection(getProtection() + 5);
+                } else if (breastplate.getLevel() == 2) {
+                    setProtection(getProtection() + 10);
+                }else if (breastplate.getLevel() == 3) {
+                    setProtection(getProtection() + 15);
+                }else
+
+                setProtection(getProtection() + breastplate.getProtect());
+                inventory.add(breastplate.getName());
+                break;
+            case 2:
+                Sword sword = new Sword(level);
+
+                if(sword.getLevel() == 1 ){
+                    setProtection(getProtection() + 5);
+                } else if (sword.getLevel() == 2 ) {
+                    setProtection(getProtection() + 10);
+                }else if (sword.getLevel() == 3 ) {
+                    setProtection(getProtection() + 15);
+                }
+
+                setDamage(getDamage() + sword.getDamage());
+                inventory.add(sword.getName());
+                break;
+            default:
+                System.err.println("Невірно введено індентифікатор обʼєкту");
+
+
+        }
     }
+    public void Show_Inventory(){System.out.println(getName() + " have: " + inventory.toString());}
+
     //Getter and Setter персонажа
     public String getName() {
         return name;
     }public void setName(String name) {
         this.name = name;
     }
-
     public String getRasa() {
         return rasa;
     }public void setRasa(String rasa) {
         this.rasa = rasa;
     }
-
     public int getLevel() {
         return level;
     }public void setLevel(int level) {
         this.level = level;
     }
-
     public int getExperience() {
         return experience;
     }public void setExperience(int experience) {
         this.experience = experience;
     }
-
     public int getProtection() {
         return protection;
     }public void setProtection(int protection) {
         this.protection = protection;
     }
-
     public int getDamage() {
         return damage;
     }public void setDamage(int damage) {
         this.damage = damage;
     }
-
     public int getEnergy() {
         return energy;
-    }public void setEnergy(int energy) {
+    }
+    public void setEnergy(int energy) {
         this.energy = energy;
     }
-
     public int getHealth() {
         return health;
-    }public void setHealth(int health) {
+    }
+    public void setHealth(int health) {
         this.health = health;
     }
+    public int getMagic_power() {
+        return magic_power;
+    }
+    public void setMagic_power(int magic_power) {
+        this.magic_power = magic_power;
+    }
+
     public void tString() {
-        System.out.println( "CHero{" +
-                "name='" + name + '\'' +
-                ", rasa='" + rasa + '\'' +
-                ", level=" + level +
-                ", protection=" + protection +
-                ", experience=" + experience +
-                ", damage=" + damage +
-                ", energy=" + energy +
-                ", health=" + health +
-                '}');
+        switch (getRasa()) {
+            case "Elf" -> {
+                System.out.println("CHero{" +
+                        "name='" + name + '\'' +
+                        ", rasa='" + rasa + '\'' +
+                        ", level=" + level +
+                        ", protection=" + protection +
+                        ", experience=" + experience +
+                        ", damage=" + damage +
+                        ", energy=" + energy +
+                        ", health=" + health +
+                        ", magic_power=" + magic_power +
+                        '}');
+            }
+            default -> {
+                System.out.println("CHero{" +
+                        "name='" + name + '\'' +
+                        ", rasa='" + rasa + '\'' +
+                        ", level=" + level +
+                        ", protection=" + protection +
+                        ", experience=" + experience +
+                        ", damage=" + damage +
+                        ", energy=" + energy +
+                        ", health=" + health +
+                        '}');
+            }
+        }
     }
 
     //Конструктор

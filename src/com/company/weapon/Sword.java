@@ -2,11 +2,20 @@ package com.company.weapon;
 
 public class Sword {
 
-    final String name = "Sword";
-    final int damage = 10;
+    private final String name = "Sword";
+    private final int damage = 10;
+    private final int ID = 2;
     private int level;
 
 
+
+
+
+    public int getLevel() {
+        return level;
+    }public void setLevel(int level) {
+        this.level = level;
+    }
 
     public String getName() {
         return name;
@@ -16,18 +25,11 @@ public class Sword {
         return damage;
     }
 
-    public int getLevel() {
-        return level;
-    }public void setLevel(int level) {
-        this.level = level;
+    public int getID() {
+        return ID;
     }
 
-    public String ID_Sword(){
-        return getName();
+    public Sword(int level) {
+        setLevel(level);
     }
-    public int Dam_Sword(){
-        return getDamage();
-    }
-
-    public Sword() {}
 }
