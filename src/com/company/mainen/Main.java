@@ -75,6 +75,7 @@ public class Main {
         ps1.Use_Apple();
 
         System.out.println(" ");
+        System.out.println(" вова лох! ");
 
 
 
